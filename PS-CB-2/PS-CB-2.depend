@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1519565610 source:d:\수업자료\ps실행파일\ps-cb-2\main.cpp
+	<iostream>
+	<stdio.h>
+	<algorithm>
+	<functional>
+	<vector>
+	<math.h>
+	<utility>
+

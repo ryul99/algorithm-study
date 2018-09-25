@@ -8,55 +8,29 @@
 #include <queue>
 using namespace std;
 //2294
-int first[3030];//1 == cut / 2 == paste
-int second[3030];
-long long dp[3030][3030z];
-int main(int argc, char const *argv[]) {
-    //priority_queue<int, vector<int>, greater<int> > wait;
-    int L, N, M;
-    int st = 0, nd;
-    scanf("%d", &L);
-    scanf("%d", &N);
-    first = {0,};
-    second = {0,};
-    int k = 1;
-    for(int i = 0; i < N; i++){
+int dp[10010];
+int main() {
+    int n, k;
+    scanf("%d %d", &n, &k);
+    priority_queue<int, vector<int>, greater<int> > nIn;
+    for(int i = 0; i < n; i++){
         int in;
         scanf("%d", &in);
-        if(in == 1){
-            first[k] = 1;
-            k++;
-        }
-        else{
-            first[k] = 0;
-            k++;
-            first[k] = 1;
-            k++;
-        }
+        nIn.push(in);
     }
-    scanf("%d", &M);
-    k = 1;
-    for(int i = 0; i < N; i++){
-        int in;
-        scanf("%d", &in);
-        if(in == 1){
-            second[k] = 1;
-            k++;
+    for(int i = 0; i < 10010; i++)
+      dp[i] = 2123456789;
+    dp[0] = 0;
+    // dp[0][1] = 1;
+    for(int i = 0; i < n; i++){
+      int m = nIn.top();
+      for(int j = 1; j <= k; j++){
+        if(m <= j){
+          dp[j] = min(dp[j - m] + 1, dp[j]);
         }
-        else{
-            second[k] = 0;
-            k++;
-            second[k] = 1;
-            k++;
-        }
+      }
+      nIn.pop();
     }
-    k = 1;
-    while(first[k] != 0){
-        if(first[k] != second[k])
-            st++;
-        k++;
-    }
-
-
+    printf("%d", dp[k] == 2123456789 ? -1 : dp[k]);
     return 0;
 }

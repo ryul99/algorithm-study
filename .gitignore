@@ -1,5 +1,6 @@
 
-# Created by https://www.gitignore.io/api/c,c++,python
+# Created by https://www.gitignore.io/api/c,c++,python,visualstudiocode
+# Edit at https://www.gitignore.io/?templates=c,c++,python,visualstudiocode
 
 ### C ###
 # Prerequisites
@@ -96,6 +97,8 @@ parts/
 sdist/
 var/
 wheels/
+pip-wheel-metadata/
+share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
@@ -156,6 +159,13 @@ ipython_config.py
 # pyenv
 .python-version
 
+# pipenv
+#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
+#   However, in case of collaboration, if having platform-specific dependencies or dependencies
+#   having no cross-platform support, pipenv may install dependencies that don’t work, or not
+#   install all needed dependencies.
+#Pipfile.lock
+
 # celery beat schedule file
 celerybeat-schedule
 
@@ -186,20 +196,18 @@ venv.bak/
 .dmypy.json
 dmypy.json
 
-### Python Patch ###
-.venv/
+# Pyre type checker
+.pyre/
 
-### Python.VirtualEnv Stack ###
-# Virtualenv
-# http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
-[Bb]in
-[Ii]nclude
-[Ll]ib
-[Ll]ib64
-[Ll]ocal
-[Ss]cripts
-pyvenv.cfg
-pip-selfcheck.json
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
 
-# End of https://www.gitignore.io/api/c,c++,python
+# End of https://www.gitignore.io/api/c,c++,python,visualstudiocode

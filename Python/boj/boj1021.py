@@ -1,17 +1,21 @@
 N, M = map(int, input().split(' '))
 idx_list = list(map(int, input().split(' ')))
-print(idx_list)
-idx = 1
+pointer = 0
 out = 0
-l = N
-all_list = list(range(1, N + 1))
-def get_distance(idx, target, l):
-    return min(abs(idx + l - target), abs(idx - target))
+deq = list(range(1, N + 1))
 
-while(len(idx_list) > 0):
-    print(get_distance(idx, idx_list[0], l))
-    out += get_distance(idx, idx_list[0], l)
-    idx = idx_list[0]
-    del idx_list[0]
-    l -= 1
+for i, idx in enumerate(idx_list):
+    right_move = 0
+    left_move = 0
+    tmp_pointer = pointer % len(deq)
+    while deq[tmp_pointer] != idx:
+        right_move += 1
+        tmp_pointer = (tmp_pointer + 1) % len(deq)
+    tmp_pointer = pointer % len(deq)
+    while deq[tmp_pointer] != idx:
+        left_move += 1
+        tmp_pointer = (tmp_pointer - 1) % len(deq)
+    out += min(left_move, right_move)
+    del deq[tmp_pointer]
+    pointer = tmp_pointer
 print(out)

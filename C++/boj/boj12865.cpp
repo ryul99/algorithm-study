@@ -27,9 +27,10 @@ int main(int argc, char const *argv[]) {
     for(auto p: all_obj){
         int w = p.first;
         int v = p.second;
-        for(int i = w; i < 100100; i++){
-            dp[i] = max(dp[i - w] + v, dp[i]);
+        for(int i = 0; i < 100100 - w; i++){
+            dp[100100 - i] = max(dp[100100 - i - w] + v, dp[100100 - i]);
         }
+        dp[w] = max(dp[w], v);
     }
     int mx = 0;
     for(int i = 0; i <= K; i++)

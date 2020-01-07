@@ -24,6 +24,7 @@ int main(int argc, char const *argv[]) {
     vector<int> visited(V + 1, INF);
     for(int i = 0; i < E; ++i){
         int u,v,w;
+        scanf("%d %d %d", &u, &v, &w);
         adj[u].emplace_back(w, v);
     }
     pq.emplace(0, K);
@@ -36,7 +37,6 @@ int main(int argc, char const *argv[]) {
             int nw = p.first;
             int n = p.second;
             if((tw + nw) < weightSum[n]){
-                printf("%d %d %d %d %d\n", v, n, visited[n], weightSum[n], (tw + nw));
                 pq.emplace(tw + nw, n);
                 weightSum[n] = tw + nw;
             }

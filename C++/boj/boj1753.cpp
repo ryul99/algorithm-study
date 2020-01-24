@@ -32,13 +32,15 @@ int main(int argc, char const *argv[]) {
         int tw = pq.top().first;
         int v = pq.top().second;
         pq.pop();
-        visited[v] = tw;
-        for(auto p: adj[v]){
-            int nw = p.first;
-            int n = p.second;
-            if((tw + nw) < weightSum[n]){
-                pq.emplace(tw + nw, n);
-                weightSum[n] = tw + nw;
+        if(visited[v] == INF){
+            visited[v] = tw;
+            for(auto p: adj[v]){
+                int nw = p.first;
+                int n = p.second;
+                if((tw + nw) < weightSum[n]){
+                    pq.emplace(tw + nw, n);
+                    weightSum[n] = tw + nw;
+                }
             }
         }
     }

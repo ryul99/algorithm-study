@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <string.h>
 #include <cstdio>
 #include <iostream>
 #include <vector>
@@ -13,6 +15,6 @@
 using namespace std;
 //
 int main(int argc, char const *argv[]) {
-    
+
     return 0;
 }

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <string>
 #include <cstdio>
 #include <iostream>
 #include <vector>

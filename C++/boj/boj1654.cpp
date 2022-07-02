@@ -15,35 +15,36 @@
 using namespace std;
 //https://www.acmicpc.net/problem/1654
 
-int check(vector<int> &v, int l) {
-    int cnt = 0;
-    for (int e : v) {
-        cnt += e / l;
-    }
-    return cnt;
-}
-
 int main(int argc, char const *argv[]) {
     //ios_base::sync_with_stdio(false)
-    int K, N, ori_max = 0;
-    vector<int> v;
+    int K, N;
+    long long begin, end = 0;
     scanf("%d %d", &K, &N);
+    vector<long long> v(K);
     for (int i = 0; i < K; ++i) {
-        int a;
-        scanf("%d", &a);
-        v.push_back(a);
-        ori_max = max(ori_max, a);
+        scanf("%lld", &v[i]);
+        end = max(end, v[i]);
     }
-
-    int begin = 1, end = ori_max + 1;
-    while (begin + 1 < end) {
-        int mid = (begin + end) / 2;
-        if (N <= check(v, mid))
-            begin = mid;
-        else
+    // search
+    begin = 1;
+    end = end + 1;
+    while (begin < end - 1) {
+        long long mid = (begin + end) / 2;
+        int cnt = 0;
+        for (long long l : v) {
+            if (cnt > 1000100 || cnt < 0) {
+                cnt = 1000100;
+                break;
+            }
+            cnt += l / mid;
+        }
+        if (cnt < N) {
             end = mid;
-        // printf("%d %d %d\n", begin, mid, end);
+            continue;
+        } else {
+            begin = mid;
+            continue;
+        }
     }
-    printf("%d\n", end - 1);
-    return 0;
+    printf("%lld\n", begin);
 }
